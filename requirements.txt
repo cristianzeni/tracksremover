@@ -1,0 +1,17 @@
+# Core libraries for stem separation
+demucs>=4.0.0
+pydub>=0.25.1
+
+# CLI with some beauty
+rich>=13.0.0
+
+# Fix for compatibility with Python 3.13+
+audioop-lts; python_version >= "3.13"
+
+# Dependencies for calculations and execution of Demucs AI
+torch>=2.0.0
+torchaudio>=2.0.0
+torchcodec
+
+# Encoder for mp3 export
+lameenc>=1.4.0
