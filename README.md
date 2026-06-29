@@ -31,24 +31,33 @@ The architecture is built on SOLID principles, completely decoupling the process
 ### System Dependencies
 TracksRemover requires FFmpeg installed on your system to handle audio decoding and encoding operations through pydub.
 
-- Linux (Arch-based): sudo pacman -S ffmpeg
-- Linux (Ubuntu/Debian): sudo apt install ffmpeg
-- macOS: brew install ffmpeg
-- Windows: Install via Chocolatey (choco install ffmpeg) or download from the official site and add it to your System PATH.
+- Linux (Arch-based) 🥰: 
+```bash
+sudo pacman -S ffmpeg
+```
+- Linux (Ubuntu/Debian) 🥱:
+```bash
+sudo apt install ffmpeg
+```
+- macOS 💸:
+```bash
+brew install ffmpeg
+```
+- Windows 🤮: Install via Chocolatey (choco install ffmpeg) or download from the official site and add it to your System PATH.
 
 ### Python Dependencies
 The tool is compatible with Python 3.9 up to the latest releases (including explicit support for Python 3.13+ via audioop-lts). 
 
 All required Python libraries are listed in the requirements.txt:
 
-demucs>=4.0.0
-pydub>=0.25.1
-rich>=13.0.0
-audioop-lts; python_version >= "3.13"
-torch>=2.0.0
-torchaudio>=2.0.0
-torchcodec
-lameenc>=1.4.0
+- demucs>=4.0.0
+- pydub>=0.25.1
+- rich>=13.0.0
+- audioop-lts; python_version >= "3.13"
+- torch>=2.0.0
+- torchaudio>=2.0.0
+- torchcodec
+- lameenc>=1.4.0
 
 ---
 
@@ -101,7 +110,7 @@ python tracks_remover.py -f "/path/to/music/The Clash - London Calling.mp3" -rm 
 *Output generated:* The Clash - London Calling_noDrums_noBass.mp3
 
 #### 4. Recursive Directory Batch Processing
-Process an entire folder structure recursively. It automatically skips files already processed (containing _no in the name) to prevent infinite loops.
+Process an entire folder structure recursively. It automatically searchs for mp3 files like a wildcard (*.mp3).
 ```bash
 python tracks_remover.py -d "/path/to/my_backing_tracks_folder/" -rm "guitars"
 ```
