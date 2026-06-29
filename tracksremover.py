@@ -18,7 +18,6 @@ class TracksRemover:
         self.output_base_dir = output_base_dir
         self.model_name = model_name
 
-        # FIXED: Added 'guitar.wav' to the core pool.
         # HTDemucs_6s outputs exactly these 6 stems.
         self.all_stems = ['vocals.wav', 'drums.wav', 'bass.wav', 'guitar.wav', 'piano.wav', 'other.wav']
 
@@ -32,7 +31,6 @@ class TracksRemover:
 
     def _validate_and_get_stems(self, items_to_remove):
         """Internal helper to validate input tokens and calculate stems to keep."""
-        # Default behavior if no argument is supplied
         if not items_to_remove:
             items_to_remove = "guitars"
 
@@ -132,8 +130,7 @@ class TracksRemover:
 
 def run_cli_mode(engine, target_file, remove_opts):
     console = Console()
-    console.print("\n [bold r]───────────────────────────────── TRACKS REMOVER CLI ─────────────────────────────────[/bold r]\n")
-    console.print(f" 🚀 [bold cyan]Starting[/bold cyan] : {target_file}")
+    console.print(f"\n 🚀 [bold cyan]Starting[/bold cyan] : {target_file}")
 
     with console.status(" ⚡ [magenta]AI Demucs[/magenta]  : Separating audio tracks...") as status:
         def update_timer(time_str):
@@ -167,6 +164,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     remover_engine = TracksRemover()
+
+    # L'intestazione principale viene stampata una sola volta qui all'avvio effettivo del programma
+    console.print("\n [bold r]───────────────────────────────── TRACKS REMOVER CLI ─────────────────────────────────[/bold r]")
 
     if args.file:
         if os.path.isfile(args.file):
